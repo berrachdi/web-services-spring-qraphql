@@ -1,0 +1,51 @@
+type Query{
+    accountsList:[Account],
+    accountById(id: String): Account,
+    customersList:[Customer]
+
+}
+
+type Mutation{
+    addAccount(account: AccountRequestDTO): AccountResponseDTO,
+    updateAccounts(updatedAccount: AccountRequestDTO,id:String): AccountResponseDTO,
+    deleteAccounts(id:String):Boolean
+}
+
+
+
+
+type Account{
+    id: String,
+    balance: Float,
+    createdAt: Float,
+    type: String,
+    currency: String,
+    customer: Customer
+
+}
+
+input AccountRequestDTO{
+    type: String,
+    currency: String,
+    balance: Float
+
+}
+
+type AccountResponseDTO{
+    id:String,
+    createdAt: Float,
+    balance: String,
+    type: String,
+    currency: String
+
+}
+
+type Customer{
+    id:ID,
+    name: String,
+    clientAccounts:[Account]
+}
+
+
+
+
